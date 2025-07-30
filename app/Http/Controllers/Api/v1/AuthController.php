@@ -6,7 +6,7 @@ use App\Http\Requests\{
     LoginRequest,
     RegistrationRequest
 };
-use App\Services\AuthService;
+use App\Services\v1\AuthService;
 use App\Http\Controllers\Controller;
 
 class AuthController extends Controller

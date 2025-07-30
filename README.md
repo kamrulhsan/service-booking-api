@@ -75,6 +75,11 @@ DB_PASSWORD=your_password
 
 ### 1. Create Database
 
+# For MySQL
+mysql -u root -p
+CREATE DATABASE service_booking;
+exit
+
 ### 2. Run Migrations and Seeders
 
 ```bash
@@ -110,6 +115,14 @@ After seeding, you can use these credentials:
 | POST | `/api/login` | Login (customer) |
 | POST | `/api/admin-login` | Login (admin) |
 
+### Admin Endpoints
 
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/services` | Get All services |
+| GET | `/api/services/{id}` | Show perticular services |
+| POST | `/api/services` | Create new service |
+| PUT | `/api/services/{id}` | Update service |
+| DELETE | `/api/services/{id}` | Delete service |
 
-**Built with ❤️ using Laravel**
+**Built with ❤️ using Laravel 12**
