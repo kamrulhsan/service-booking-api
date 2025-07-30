@@ -107,7 +107,8 @@ After seeding, you can use these credentials:
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | POST | `/api/register` | Register new customer |
-| POST | `/api/login` | Login (admin/customer) |
+| POST | `/api/login` | Login (customer) |
+| POST | `/api/admin-login` | Login (admin) |
 
 
 
