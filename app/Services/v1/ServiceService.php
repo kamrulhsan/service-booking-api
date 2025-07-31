@@ -9,7 +9,7 @@ class ServiceService
 
     public function all()
     {
-        $services = Service::active()->get();
+        $services = Service::active()->select('id', 'name', 'price', 'status')->get();
 
         return response()->json([
             'success' => true,

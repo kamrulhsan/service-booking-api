@@ -13,8 +13,9 @@ class BookingService
         $user = auth()->user();
 
         if ($user->IsAdmin()) {
-            $bookings = Booking::with('user', 'service')
-            ->orderBy('booking_date', 'desc')->get();
+            $bookings = Booking::with('user:id,name', 'service:id,name,price,status')
+                ->orderBy('booking_date', 'desc')
+                ->get();
 
             return response()->json([
                 'success' => true,
@@ -63,7 +64,7 @@ class BookingService
     {
         $user = auth()->user();
 
-        $bookings =  Booking::with('user', 'service')->where('user_id', $user->id)
+        $bookings =  Booking::with('user:id,name', 'service:id,name,price,status')->where('user_id', $user->id)
                         ->orderBy('booking_date', 'desc')->get();
         $bookingData = $bookings->map(function ($booking) {
             return [

@@ -41,7 +41,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
         // Admin Bookings
         Route::controller(BookingsController::class)->group(function () {
-            Route::get('/bookings', 'index');
+            Route::get('/admin/bookings', 'index');
             Route::put('/bookings/{booking}/status', 'updateStatus');
             Route::delete('/bookings/{booking}', 'destroy');
         });
