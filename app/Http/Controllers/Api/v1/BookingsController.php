@@ -3,63 +3,51 @@
 namespace App\Http\Controllers\Api\v1;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\BookingRequest;
+use App\Http\Requests\BookingStatusUpdateRequest;
+use App\Models\Booking;
+use App\Services\v1\BookingService;
 use Illuminate\Http\Request;
 
 class BookingsController extends Controller
 {
+    public $bookingService;
+
+    public function __construct(BookingService $bookingService)
+    {
+        $this->bookingService = $bookingService;
+    }
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return $this->bookingService->all();
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BookingRequest $request)
     {
-        //
+        return $this->bookingService->create($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function fetchByUser()
     {
-        //
+        return $this->bookingService->fetchByUser();
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function updateStatus(BookingStatusUpdateRequest $request, Booking $booking)
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+        return $this->bookingService->updateStatus($request, $booking);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Booking $booking)
     {
-        //
+        return $this->bookingService->destroy($booking);
     }
 }
