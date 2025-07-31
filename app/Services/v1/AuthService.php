@@ -71,4 +71,17 @@ class AuthService {
             'token_type' => 'Bearer',
         ]);
     }
+
+    public function logout()
+    {
+        $user = auth()->user();
+
+        // Revoke the current access token
+        $user->tokens()->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Logged out successfully.',
+        ]);
+    }
 }
