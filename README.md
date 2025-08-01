@@ -127,7 +127,6 @@ After seeding, you can use these credentials:
 |--------|----------|-------------|
 | GET | `/api/admin/bookings` | Get All Booking |
 | Delete | `/api/bookings/{booking}` | Delete booking |
-
 | GET | `/api/services/{id}` | Show perticular services |
 | POST | `/api/services` | Create new service |
 | PUT | `/api/services/{id}` | Update service |
@@ -163,8 +162,12 @@ php artisan test tests/Unit/BookingTest.php
 - ✅ Service management (CRUD operations)
 - ✅ Booking system (CRUD operations)
 
+---
 
-The API will be available at `http://localhost:8000/api`
-The API Documentation will be available at `http://localhost:8000/api/documentation`
+The API will be available at `http://localhost:8000/api/`.  
+
+The API Documentation will be available at `http://localhost:8000/api/documentation`.
+
+The Postman Collection will be available [here](https://drive.google.com/drive/folders/1vA-0McXW9Hs8HEwKrVL3bT-ZFuyntka_?usp=sharing). After Download the JSON file, kindly import it in Postman to use APIs.
 
 **Built with ❤️ using Laravel 12**
