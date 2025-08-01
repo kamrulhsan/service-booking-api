@@ -1,24 +1,12 @@
 # Service Booking API
 
-A comprehensive REST API for service booking management built with Laravel 11, featuring authentication, role-based access control, and complete CRUD operations for services and bookings.
+A comprehensive REST API for service booking management built with Laravel 12, featuring authentication, role-based access control, and complete CRUD operations for services and bookings.
+
+In Below the Installation Process, Routes, Tast Cases, and Documentaion are provided.
 
 ## 🚀 Features
 
 - **🔐 Authentication**: Token-based auth with Laravel Sanctum
-
-## 📋 Table of Contents
-
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Database Setup](#database-setup)
-- [API Endpoints](#api-endpoints)
-- [Authentication](#authentication)
-- [Testing](#testing)
-- [API Documentation](#api-documentation)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## 🔧 Requirements
 
@@ -76,9 +64,11 @@ DB_PASSWORD=your_password
 ### 1. Create Database
 
 # For MySQL
+```
 mysql -u root -p
 CREATE DATABASE service_booking;
 exit
+```
 
 ### 2. Run Migrations and Seeders
 
@@ -91,6 +81,12 @@ php artisan db:seed
 
 # Or run both together
 php artisan migrate:fresh --seed
+```
+
+### Start Development Server
+
+```bash
+php artisan serve
 ```
 
 ### 3. Test Credentials
@@ -115,14 +111,60 @@ After seeding, you can use these credentials:
 | POST | `/api/login` | Login (customer) |
 | POST | `/api/admin-login` | Login (admin) |
 
+### Authenticated Endpoints (Customer)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/logout` | Logout current user |
+| GET | `/api/services` | View all active services |
+| GET | `/api/bookings/user` | View own bookings |
+| POST | `/api/bookings` | Create new booking |
+| GET | `/api/bookings/{id}` | View specific booking |
+
 ### Admin Endpoints
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|
-| GET | `/api/services` | Get All services |
+| GET | `/api/admin/bookings` | Get All Booking |
+| Delete | `/api/bookings/{booking}` | Delete booking |
+
 | GET | `/api/services/{id}` | Show perticular services |
 | POST | `/api/services` | Create new service |
 | PUT | `/api/services/{id}` | Update service |
 | DELETE | `/api/services/{id}` | Delete service |
+
+## 🔐 Authentication
+
+This API uses Laravel Sanctum for token-based authentication.
+
+### Login Flow
+
+1. **Register/Login** to get access token
+2. **Include token** in subsequent requests
+3. **Use Bearer token** in Authorization header
+
+## 🧪 Testing
+
+### Run Tests
+
+```bash
+# Run all tests
+php artisan test
+
+# Run specific test class
+php artisan test tests/Unit/AuthTest.php
+php artisan test tests/Unit/ServiceTest.php
+php artisan test tests/Unit/BookingTest.php
+```
+
+### Test Coverage
+
+- ✅ Authentication (register, login, logout)
+- ✅ Service management (CRUD operations)
+- ✅ Booking system (CRUD operations)
+
+
+The API will be available at `http://localhost:8000/api`
+The API Documentation will be available at `http://localhost:8000/api/documentation`
 
 **Built with ❤️ using Laravel 12**
